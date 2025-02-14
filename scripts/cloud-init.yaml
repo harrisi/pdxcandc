@@ -23,7 +23,8 @@ runcmd:
 
   - mkdir -p /var/www/pdxcandc
   - chown deploy:deploy /var/www/pdxcandc
-  
+
+  - ln -s /etc/nginx/sites-available/pdxcandc.conf /etc/nginx/sites-enabled/
   - rm /etc/nginx/sites-enabled/default
   - systemctl enable nginx
   - systemctl start nginx
