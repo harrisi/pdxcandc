@@ -1,0 +1,5 @@
+REMOTE_USER="deploy"
+REMOTE_HOST="10.10.10.10"
+SITE_ROOT="/var/www/pdxcandc"
+NGINX_CONF="/etc/nginx/sites-available/pdxcandc.conf"
+NGINX_ENABLED="/etc/nginx/sites-enabled/pdxcandc.conf"
