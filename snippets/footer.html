@@ -14,6 +14,11 @@
         </div>
     </div>
     <div class="footer-bottom">
-        <p>&copy; <!--# echo $date_local --> Portland Code & Coffee. All rights reserved.</p>
+        <!--# block name="footer_copyright" -->
+            <!--# config timefmt="%Y" -->
+            <p>&copy; <!--# echo var="date_local" --> Portland Code & Coffee. All rights reserved.</p>
+        <!--# endblock -->
+        <!--# include stub="footer_copyright" -->
+        <!--# echo var="date_local"-->
     </div>
 </footer>

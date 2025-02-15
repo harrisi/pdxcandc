@@ -1,7 +1,12 @@
 + /index.html
 + /404.html
-+ /includes/***
++ /snippets/***
 + /css/***
-+ /config/
-+ /config/pdxcandc.conf
+# these are actually an issue, since certbot manages the ssl config. I'd need to
+# sync the ssl config locally I think? but I don't really want to do that. so
+# this is really more of the provisioning config. unfortunately, that means that
+# changes to the nginx config need to happen on the server, and they aren't
+# reflected here.
+# + /config/
+# + /config/pdxcandc.conf
 - ***
