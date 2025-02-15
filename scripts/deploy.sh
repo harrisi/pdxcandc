@@ -18,17 +18,7 @@ RSYNC_OUTPUT=$(rsync \
   --verbose \
   --compress \
   --delete \
-  --itemize-changes \
   --include-from='.rsyncinclude' \
   ./ "$REMOTE_USER@$REMOTE_HOST:$SITE_ROOT/")
-
-if echo "$RSYNC_OUTPUT" | grep -q 'conf'; then
-  echo "updating nginx config"
-  ssh "$REMOTE_USER@$REMOTE_HOST" <<EOF
-    sudo cp $SITE_ROOT/config/pdxcandc.conf $NGINX_CONF
-
-    sudo nginx -t && sudo systemctl reload nginx
-EOF
-fi
 
 echo "done"
