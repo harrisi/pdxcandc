@@ -2,11 +2,18 @@
 + /404.html
 + /snippets/***
 + /css/***
++ /js
+# I'm whitelisting these just because I don't want to accidentally add random js
+# files to the deploy.
++ /js/live-reload.js
++ /scripts/
++ /scripts/live-reload-server.js
 # these are actually an issue, since certbot manages the ssl config. I'd need to
 # sync the ssl config locally I think? but I don't really want to do that. so
 # this is really more of the provisioning config. unfortunately, that means that
 # changes to the nginx config need to happen on the server, and they aren't
 # reflected here.
-# + /config/
++ /config/
 # + /config/pdxcandc.conf
++ /config/live-reload.service
 - ***

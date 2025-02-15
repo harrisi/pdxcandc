@@ -1,0 +1,13 @@
+[Unit]
+Description=Live Reload Server
+After=network.target
+
+[Service]
+Type=simple
+User=deploy
+ExecStart=/usr/local/bin/node /var/www/pdxcandc/scripts/live-reload-server.js
+Restart=always
+WorkingDirectory=/var/www/pdxcandc
+
+[Install]
+WantedBy=multi-user.target

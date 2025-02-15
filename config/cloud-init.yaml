@@ -32,7 +32,20 @@ runcmd:
   - systemctl enable nginx
   - systemctl start nginx
 
+  - mkdir -p /var/log/journal
+  - mkdir -p /etc/systemd/journald.conf.d
+  - systemd-tmpfiles --create --prefix /var/log/journal
+  - systemctl restart systemd-journald
+
 write_files:
+  - path: /etc/systemd/journald.conf.d/50-pdxcandc-journald.conf
+    content: |
+      [Journal]
+      SystemMaxUse=100M
+      MaxRetentionSec=7d
+      Compress=yes
+      ForwardToSyslog=yes
+      Storage=persistent
   - path: /etc/ssh/sshd_config.d/custom.conf
     content: |
       PermitRootLogin no
