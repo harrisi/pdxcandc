@@ -13,8 +13,12 @@ users:
   - name: deploy
     sudo: ['ALL=(ALL) NOPASSWD:ALL']
     shell: /bin/bash
+    # Make sure to include a deployment machine's public key here, or else you
+    # will lock yourself out of the server! Depending on your provider, you may
+    # not be able to access the machine at all, and need to recreate it.
+    # You can add more keys later, such as for CI/CD, another machine, etc.
     ssh_authorized_keys:
-      - ssh-rsa REPLACE_ME
+      - ssh-rsa REPLACE_ME foo@example.com
 
 runcmd:
   - ufw allow OpenSSH
@@ -24,7 +28,6 @@ runcmd:
   - mkdir -p /var/www/pdxcandc
   - chown deploy:deploy /var/www/pdxcandc
 
-  - ln -s /etc/nginx/sites-available/pdxcandc.conf /etc/nginx/sites-enabled/
   - rm /etc/nginx/sites-enabled/default
   - systemctl enable nginx
   - systemctl start nginx
