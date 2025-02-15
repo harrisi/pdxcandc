@@ -15,12 +15,24 @@ fi
 echo "syncing files"
 RSYNC_OUTPUT=$(rsync \
   --archive \
+  --checksum \
   --verbose \
   --compress \
   --delete \
+  --itemize-changes \
   --include-from='.rsyncinclude' \
   ./ "$REMOTE_USER@$REMOTE_HOST:$SITE_ROOT/")
 
-ssh "$REMOTE_USER@$REMOTE_HOST" "curl -X POST localhost:${PORT:-4321}"
+echo "rsync output:"
+echo "$RSYNC_OUTPUT"
+echo "---"
+
+# only reload if there are changes
+if [ -n "$(echo "$RSYNC_OUTPUT" | egrep '^<')" ]; then
+  ssh "$REMOTE_USER@$REMOTE_HOST" "curl -X POST localhost:${PORT:-4321}"
+  echo "reloaded"
+else
+  echo "no changes"
+fi
 
 echo "done"

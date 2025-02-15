@@ -34,25 +34,30 @@ const server = http.createServer((req, res) => {
     'Connection': 'keep-alive',
   })
 
+  const keep_alive = setInterval(() => {
+    res.write(': keepalive\n\n')
+  }, 30 * 1000)
+
   clients.add(res)
 
   req.on('close', () => {
-    log('client disconnected')
+    clearInterval(keep_alive)
     clients.delete(res)
+    log('client disconnected')
   })
 })
 
 const notifyClients = () => {
-  log(`Notifying ${clients.size} clients...`)
+  log(`notifying ${clients.size} clients`)
   clients.forEach(client => {
     client.write(`data: reload\n\n`)
   })
 }
 
-server.listen(PORT, 'localhost', () => log(`Live reload server running on http://localhost:${PORT}`))
+server.listen(PORT, 'localhost', () => log(`server running on http://localhost:${PORT}`))
 
 process.on('SIGINT', () => {
-  log('Shutting down live reload server...')
+  log('shutting down server')
   clients.forEach(client => client.end())
   process.exit()
 })
