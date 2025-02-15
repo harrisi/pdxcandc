@@ -1,4 +1,7 @@
-/* the following three blocks arefrom swyx.io/css-100-bytes */
+@import "css/header.css";
+@import "css/footer.css";
+
+/* the following three blocks are from swyx.io/css-100-bytes */
 html {
   max-width: 70ch;
   padding: 3em 1em;
