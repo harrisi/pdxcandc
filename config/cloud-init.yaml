@@ -8,6 +8,9 @@ packages:
   - certbot
   - python3-certbot-nginx
   - ufw
+  # I need node as well, but the version for ubuntu is older than I'd like. on
+  # the actual server, I'm just downloading the tarball and moving it to
+  # /usr/local/bin
 
 users:
   - name: deploy
@@ -36,6 +39,15 @@ runcmd:
   - mkdir -p /etc/systemd/journald.conf.d
   - systemd-tmpfiles --create --prefix /var/log/journal
   - systemctl restart systemd-journald
+
+  # double check the version here!
+  - curl -O https://nodejs.org/dist/v22.14.0/node-v22.14.0-linux-x64.tar.xz
+  # I actually only want bin/node
+  - tar xf node-v22.14.0-linux-x64.tar.xz 
+  - mkdir -p /usr/local/bin
+  - mv node-v22.14.0-linux-x64/bin/node /usr/local/bin/node
+  - rm -rf node-v22.14.0-linux-x64
+  - rm node-v22.14.0-linux-x64.tar.xz
 
 write_files:
   - path: /etc/systemd/journald.conf.d/50-pdxcandc-journald.conf
