@@ -13,7 +13,7 @@
 # this is really more of the provisioning config. unfortunately, that means that
 # changes to the nginx config need to happen on the server, and they aren't
 # reflected here.
-+ /config/
+# + /config/
 # + /config/pdxcandc.conf
-+ /config/live-reload.service
+# + /config/live-reload.service
 - ***
