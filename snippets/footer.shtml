@@ -1,0 +1,12 @@
+<footer>
+  <section class="s">
+    <ul class="sl">
+      <li><a href="https://codeandcoffee.chat">Discord</a></li>
+      <li><a href="https://meetup.com/portland-code-coffee">Meetup</a></li>
+      <li><a href="https://github.com/CodeandCoffeeCommunity">GitHub</a></li>
+    </ul>
+  </section>
+  <section class="copyright">
+    <p>&copy; <!--# include virtual="/snippets/year.html" --> PDX Code & Coffee.</p>
+  </section>
+</footer>
