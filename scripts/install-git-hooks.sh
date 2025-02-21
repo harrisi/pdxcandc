@@ -3,7 +3,7 @@ HOOKS=(
 )
 
 for hook in "${HOOKS[@]}"; do
-  mv ./scripts/git/$hook .git/hooks/$hook
+  cp ./scripts/git/$hook .git/hooks/$hook
   chmod +x .git/hooks/$hook
 done
 
