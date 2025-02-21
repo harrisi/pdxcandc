@@ -14,3 +14,10 @@ section#next_event {
   font-weight: 600;
   margin-bottom: 1rem;
 }
+
+@media (prefers-color-scheme: dark) {
+  section#next_event {
+    background-color: rgb(20 20 20 / 0.98);
+    color: #f2f2f2;
+  }
+}
