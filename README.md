@@ -11,13 +11,16 @@ default. The live reload server uses Server Side Events (SSE) over HTTP 2.0 to
 send connected clients a reload message. There is also a heartbeat sent every 30
 seconds to maintain the connection.
 
-When running locally, you can run the `watch.sh` script, which uses `entr`
+There are two ways to run the live reload server. Installing the pre-push git hook
+with `./scripts/install-git-hooks.sh` will trigger a deploy of the changes to the
+live server when a push is made. This ensures the git repo will be in sync with the server, which is nice. Make sure to set the `PROD` environment variable to trigger a deploy to the production server.
+
+The other way is to run the `watch.sh` script (with `$PROD` set), which uses `entr`
 (although any other file watching utility would work) to run the `deploy.sh`
 script when files relevant to the site are modified. This is based on a checksum
-of the file and uses `rsync` to send a minimal amount of data to the server. By
-default, if the live reload dev server is running, all connected clients will
-reload the page on deployment. If a user agent has JavaScript disabled, the user
-will have to manually refresh to see changes, as normal.
+of the file and uses `rsync` to send a minimal amount of data to the server. If
+`$PROD` is not set, it will just trigger the local instnce of the coming up server
+(https://github.com/harrisi/comingup_events).
 
 The current server is hosted on a $4 VPS in a San Franciscan datacenter. There
 is a provisioning script in the [cloud-init](http://cloud-init.io) format for
