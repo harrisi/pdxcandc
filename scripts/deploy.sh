@@ -27,9 +27,10 @@ echo "rsync output:"
 echo "$RSYNC_OUTPUT"
 echo "---"
 
+# "curl -X POST localhost:${PORT:-4321}"
 # only reload if there are changes
 if [ -n "$(echo "$RSYNC_OUTPUT" | egrep '^<')" ]; then
-  ssh "$REMOTE_USER@$REMOTE_HOST" "curl -X POST localhost:${PORT:-4321}"
+  ssh "$REMOTE_USER@$REMOTE_HOST" "$(cat scripts/trigger.sh)"
   echo "reloaded"
 else
   echo "no changes"

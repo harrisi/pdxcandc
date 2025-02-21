@@ -2,5 +2,8 @@
 
 set -eo pipefail
 
-# set this based on dev/prod
-git ls-files | entr -c ./scripts/local.sh
+if [ -z "$PROD" ]; then
+  git ls-files | entr -c ./scripts/trigger.sh
+else
+  git ls-files | entr -c ./scripts/deploy.sh
+fi

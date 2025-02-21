@@ -1,0 +1,9 @@
+#!/bin/bash
+
+set -eo pipefail
+
+if [ -z "$PROD" ]; then
+  ./scripts/trigger.sh
+else
+  ./scripts/deploy.sh
+fi
