@@ -27,7 +27,7 @@ body {
 }
 
 div#live_count {
-  font-size: 0.8rem;
+  font-size: 16px;
   color: #666;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
   border-radius: 4px;
