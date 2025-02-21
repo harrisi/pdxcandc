@@ -1,3 +1,4 @@
-<!--# include virtual="/remote" set="json" -->
-<!--# echo var="json" -->
-huh
+<div id="comingup-widget">
+  <h2>Next event</h2>
+  <!--# include virtual="/remote" -->
+</div>

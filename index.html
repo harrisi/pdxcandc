@@ -2,21 +2,36 @@
 <html lang="en">
 
 <head>
-  <!--#include virtual="/snippets/meta.html" -->
-  <script src="/js/live-reload.js"></script>
+  <!--#include virtual="/snippets/meta.shtml" -->
+
+  <script src="/js/live-reload.js" defer></script>
 </head>
 
 <body>
-  <!--#include virtual="/snippets/header.html" -->
+  <!-- I'm not including a typical header for now -->
+  <!-- include virtual="/snippets/header.shtml" -->
+  
+  <div id="live_count"></div>
 
   <main class="site-main">
-    <section class="hero">
-      <h1>Welcome to PDX Code & Coffee</h1>
-      <p>A community of developers, designers, and tech enthusiasts in Portland, Oregon.</p>
+    <section id="hero">
+      <!--#include virtual="/snippets/hero.shtml" -->
+    </section>
+
+    <section id="next_event">
+      <!--#include virtual="/snippets/next_event.shtml" -->
+    </section>
+
+    <section id="about">
+      <!--#include virtual="/snippets/about.shtml" -->
+    </section>
+
+    <section id="contact">
+      <!--#include virtual="/snippets/contact.shtml" -->
     </section>
   </main>
 
-  <!--#include virtual="/snippets/footer.html" -->
+  <!--#include virtual="/snippets/footer.shtml" -->
 </body>
 
 </html>

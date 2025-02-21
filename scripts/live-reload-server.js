@@ -11,7 +11,10 @@ const log = message => {
 const server = http.createServer((req, res) => {
   log(`${req.method} ${req.url} from ${req.socket.remoteAddress}`)
 
-  if (req.socket.remoteAddress !== '127.0.0.1' && req.socket.remoteAddress !== '::1') {
+  if (
+    req.socket.remoteAddress !== '127.0.0.1' &&
+    req.socket.remoteAddress !== '::1'
+  ) {
     log('forbidden')
     res.writeHead(403, { 'Content-Type': 'text/plain' })
     res.end('forbidden')
@@ -19,7 +22,7 @@ const server = http.createServer((req, res) => {
   }
 
   if (req.method === 'POST') {
-    notifyClients()
+    notifyClients('reload')
     log('notified clients')
     res.writeHead(200, { 'Content-Type': 'text/plain' })
     res.end('ok')
@@ -31,7 +34,7 @@ const server = http.createServer((req, res) => {
   res.writeHead(200, {
     'Content-Type': 'text/event-stream',
     'Cache-Control': 'no-cache',
-    'Connection': 'keep-alive',
+    Connection: 'keep-alive',
   })
 
   const keep_alive = setInterval(() => {
@@ -40,21 +43,26 @@ const server = http.createServer((req, res) => {
 
   clients.add(res)
 
+  notifyClients(`c ${clients.size}`)
+
   req.on('close', () => {
     clearInterval(keep_alive)
     clients.delete(res)
+    notifyClients(`c ${clients.size}`)
     log('client disconnected')
   })
 })
 
-const notifyClients = () => {
+const notifyClients = msg => {
   log(`notifying ${clients.size} clients`)
   clients.forEach(client => {
-    client.write(`data: reload\n\n`)
+    client.write(`data: ${msg}\n\n`)
   })
 }
 
-server.listen(PORT, 'localhost', () => log(`server running on http://localhost:${PORT}`))
+server.listen(PORT, 'localhost', () =>
+  log(`server running on http://localhost:${PORT}`)
+)
 
 process.on('SIGINT', () => {
   log('shutting down server')

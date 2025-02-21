@@ -1,6 +1,19 @@
-nav#main-nav {
+header {
+  width: 100%;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2rem;
+  flex-direction: column;
+  row-gap: 15px;
+
+  & a {
+    text-decoration: none;
+  }
+
+  & ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+    column-gap: 20px;
+  }
 }

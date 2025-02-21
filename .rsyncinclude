@@ -2,6 +2,8 @@
 + /404.html
 + /snippets/***
 + /css/***
++ /assets/
++ /assets/images/***
 + /js
 # I'm whitelisting these just because I don't want to accidentally add random js
 # files to the deploy.

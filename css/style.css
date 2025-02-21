@@ -1,21 +1,40 @@
 @import "header.css";
+@import "hero.css";
 @import "footer.css";
+@import "next_event.css";
 
-/* the following three blocks are from swyx.io/css-100-bytes */
+:root {
+
+}
+
 html {
-  max-width: 70ch;
-  padding: 3em 1em;
-  margin: auto;
   line-height: 1.75;
   font-size: 1.25em;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background-color: #f0f0f0;
+  color: #1c1c1c;
 }
 
-h1,h2,h3,h4,h5,h6 {
-  margin: 3em 0 1em;
+body {
+  margin: 0;
 }
 
-p,ul,ol {
-  margin-bottom: 2em;
-  color: #1d1d1d;
-  font-family: sans-serif;
+@media (prefers-color-scheme: dark) {
+  html {
+    background-color: #1c1c1c;
+    color: #f0f0f0;
+  }
+}
+
+div#live_count {
+  font-size: 0.8rem;
+  color: #666;
+  /* border: 2px solid #ccc; */
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  padding: 4px;
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background-color: #f6f6f6;
 }

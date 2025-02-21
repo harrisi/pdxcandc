@@ -1,12 +1,8 @@
 <footer>
-  <section class="s">
-    <ul class="sl">
-      <li><a href="https://codeandcoffee.chat">Discord</a></li>
-      <li><a href="https://meetup.com/portland-code-coffee">Meetup</a></li>
-      <li><a href="https://github.com/CodeandCoffeeCommunity">GitHub</a></li>
-    </ul>
-  </section>
-  <section class="copyright">
-    <p>&copy; <!--# include virtual="/snippets/year.html" --> PDX Code & Coffee.</p>
-  </section>
+  <ul id="external-links">
+    <li><a id="discord" href="https://codeandcoffee.chat"></a></li>
+    <li><a id="meetup" href="https://meetup.com/portland-code-coffee"></a></li>
+    <li><a id="github" href="https://github.com/CodeandCoffeeCommunity"></a></li>
+  </ul>
+  <p id="copyright">&copy; <!--# include virtual="/snippets/year.shtml" --> PDX Code & Coffee.</p>
 </footer>

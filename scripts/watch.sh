@@ -2,4 +2,5 @@
 
 set -eo pipefail
 
-git ls-files | entr -c ./scripts/deploy.sh
+# set this based on dev/prod
+git ls-files | entr -c ./scripts/local.sh
