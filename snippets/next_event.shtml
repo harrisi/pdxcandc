@@ -1,4 +1,4 @@
-<div id="comingup-widget">
+<div id="comingup-widget-container">
   <h2>Next event</h2>
   <!--# include virtual="/remote" -->
 </div>

@@ -11,10 +11,16 @@
     ) {
       const { num_clients } = maybe_match.groups
       const live_count_el = document.querySelector('div#live_count')
+      const live_count_number_el = live_count_el.querySelector('#live_count_number')
+      const live_count_label_el = live_count_el.querySelector('#live_count_label')
       if (num_clients > 1) {
-        live_count_el.innerHTML = `${num_clients} people here!`
+        live_count_number_el.innerHTML = num_clients
+        live_count_label_el.innerHTML = 'people here!'
+        live_count_el.style.display = 'block'
       } else {
-        live_count_el.innerHTML = ''
+        live_count_number_el.innerHTML = ''
+        live_count_label_el.innerHTML = "You're the only one here!"
+        live_count_el.style.display = 'none'
       }
     } else {
       console.log('unknown message:', event.data)

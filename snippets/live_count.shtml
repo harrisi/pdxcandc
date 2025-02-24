@@ -1,0 +1,4 @@
+<div id="live_count">
+  <span id="live_count_number">0</span>
+  <span id="live_count_label">people here!</span>
+</div>
